@@ -1,0 +1,263 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: auto; 
+}
+
+ /* Add to your CSS */
+.hero-section,
+.tabs-container,
+.main-content,
+.chat-interface {
+  flex-shrink: 0; 
+}
+/* General Styles */
+.frontpage {
+  font-family: 'Arial', sans-serif;
+  background: #f0f4f8;
+  min-height: 100vh;
+  height: 100vh; 
+  overflow-y: auto; 
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Hero Section */
+.hero-section {
+  background: linear-gradient(135deg, #0a2342 0%, #0a2342aa),
+    url('https://images.unsplash.com/photo-1584433144859-1fc3ab64a957') center/cover;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  border-radius: 15px;
+  margin-bottom: 2rem;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero-content p {
+  font-size: 1.25rem;
+  margin: 1rem 0 2rem;
+}
+
+.cta-button {
+  background: #e73c50;
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(231, 60, 80, 0.4);
+}
+
+.cta-button:hover {
+  background: #c0392b;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(231, 60, 80, 0.6);
+}
+
+/* Tabs Section */
+.tabs-container {
+  background: #fff;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.tab {
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  color: #555;
+}
+
+.tab:hover {
+  background: #e73c50;
+  color: white;
+  border-color: #e73c50;
+}
+
+.tab.active {
+  background: #e73c50;
+  color: white;
+  border-color: #e73c50;
+}
+
+.tab-content {
+  padding: 1rem;
+}
+
+.tab-content h2 {
+  color: #0a2342;
+  margin-top: 0;
+}
+
+.tab-content p {
+  color: #555;
+  line-height: 1.6;
+}
+
+
+.main-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  margin-bottom: 2rem; 
+  gap: 2rem;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card h2 {
+  color: #0a2342;
+  margin-top: 0;
+}
+
+.placeholder {
+  background: #f4f4f9;
+  padding: 1rem;
+  border-radius: 8px;
+  color: #666;
+  text-align: center;
+}
+
+
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  .tabs {
+    flex-direction: column;
+  }
+
+  .main-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+.chat-interface {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.chat-interface h2 {
+  margin-top: 0;
+  color: #0a2342;
+}
+
+.chat-window {
+  height: 200px;
+  overflow-y: auto; 
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background: #f9f9f9;
+}
+
+.message {
+  margin-bottom: 0.75rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  max-width: 70%;
+}
+
+.user-message {
+  background: #0a2342;
+  color: white;
+  margin-left: auto;
+}
+
+.bot-message {
+  background: #e73c50;
+  color: white;
+  margin-right: auto;
+}
+
+.chat-input {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.chat-input button {
+  background: #0a2342;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.chat-input button:hover {
+  background: #081c33;
+}
+
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  .tabs {
+    flex-direction: column;
+  }
+
+  .main-content {
+    grid-template-columns: 1fr;
+  }
+}

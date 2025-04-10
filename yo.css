@@ -1,107 +1,175 @@
-* {
-  margin: 0;
-  padding: 0;
+/* Login Page Styles */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-body {
-  font-family: 'Arial', sans-serif;
+
+.login-container {
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  width:1000px;
-  margin: 0;
-  background: linear-gradient(135deg, #06080b 0%, #0a2342 100%);
-  justify-self: center;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  padding: 2rem;
 }
 
-.login-bar {
-  background: rgba(218, 208, 208, 0.95);
-  padding: 100px;
+.login-box {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 2.5rem;
   border-radius: 20px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-  width: 95%;
-  max-width: 800px;
-  min-height: 600px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 450px;
+  transform: translateY(0);
+  transition: transform 0.3s ease;
+  overflow: hidden;
+}
+
+.login-box:hover {
+  transform: translateY(-5px);
+}
+
+.auth-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.ems-logo {
   display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  border: 3px solid #e43ce7;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.ems-icon {
+  font-size: 2.5rem;
+  color: #e94560;
 }
 
 .ems-title {
-  text-align: center;
-  color: #e73c50;
-  margin-bottom: 30px;
-}
-
-.ems-title h1 {
   font-size: 2.5rem;
+  color: #16213e;
   margin: 0;
   letter-spacing: 2px;
 }
 
-.ems-title p {
-  font-size: 1.2rem;
-  color: #2c3e50;
-  margin-top: 10px;
+.tagline {
+  color: #4a4a4a;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
 }
 
-.login-bar h2 {
-  font-size: 2rem;
-  color: #2c3e50;
-  margin-bottom: 40px;
-  text-align: center;
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
-.login-bar input {
-  width: 95%;
-  padding: 20px;
-  margin-bottom: 30px;
-  border: 2px solid #bdc3c7;
-  border-radius: 10px;
-  font-size: 1.1rem;
+.input-group {
+  position: relative;
+}
+
+.input-group input {
+  width: 100%; /* Ensure it stays within the container */
+  padding: 0.8rem 0.8rem 0.8rem 2.5rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 5px;
+  font-size: 1rem;
   transition: all 0.3s ease;
+  box-sizing: border-box; /* Include padding and border in the width */
 }
 
-.login-bar input:focus {
-  border-color: #3498db;
-  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+
+.input-group input:focus {
+  border-color: #e94560;
+  box-shadow: 0 0 0 3px rgba(233, 69, 96, 0.1);
   outline: none;
 }
 
-.login-bar button {
-  width: 60%;
-  padding: 15px;
+.input-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
   font-size: 1.2rem;
-  font-weight: bold;
-  color: #fff;
-  background-color: #0a0710;
+  color: #7a7a7a;
+}
+
+.login-button {
+  background: #e94560;
+  color: white;
+  padding: 1rem;
   border: none;
   border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: 0.3s ease;
-  align-self: center;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
-.login-bar button:hover {
-  background-color: #c0392b;
+.login-button:hover {
+  background: #d23a54;
   transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(233, 69, 96, 0.3);
 }
 
-@media (max-width: 768px) {
-  .login-bar {
-      padding: 30px;
-      margin: 20px;
-      min-height: auto;
+.button-arrow {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.login-button:hover .button-arrow {
+  transform: translateX(3px);
+}
+
+.additional-options {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.forgot-password {
+  color: #7a7a7a;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.forgot-password:hover {
+  color: #e94560;
+}
+
+.signup-link {
+  color: #4a4a4a;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.signup-link a {
+  color: #e94560;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .login-box {
+    padding: 1.5rem;
+    max-width: 90%; }/* Adjust for smaller screens */
+  
+
+  
+  .ems-title {
+    font-size: 2rem;
   }
   
-  .ems-title h1 {
-      font-size: 2rem;
-  }
-  
-  .login-bar h2 {
-      font-size: 1.8rem;
+  .input-group input {
+    padding: 0.8rem 0.8rem 0.8rem 2.2rem;
   }
 }
