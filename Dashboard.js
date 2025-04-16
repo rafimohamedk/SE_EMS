@@ -1,15 +1,22 @@
 import React, { useState } from 'react';
-import './Dashboard_Module.css'; 
-import Frontpage from './frontpage'; 
+import './Dashboard_Module.css';
+import Frontpage from './frontpage';
 
 const Dashboard = () => {
   const [showDashboard, setShowDashboard] = useState(false);
+  const [userData, setUserData] = useState({});
+
+  const handleSaveUserData = (data) => {
+    setUserData(data);
+  };
 
   return (
     <div className="dashboard">
       {!showDashboard ? (
-        
-        <Frontpage onGetStarted={() => setShowDashboard(true)} />
+        <Frontpage
+          onGetStarted={() => setShowDashboard(true)}
+          saveUserData={handleSaveUserData}
+        />
       ) : (
         <div className="dashboard-container">
           <h1>Emergency Medical Service Dashboard</h1>
@@ -22,27 +29,27 @@ const Dashboard = () => {
               <div className="details-grid">
                 <div className="detail-item">
                   <label>Full Name:</label>
-                  <p>John Doe</p>
+                  <p>{userData.fullName || 'John Doe'}</p>
                 </div>
                 <div className="detail-item">
                   <label>Age:</label>
-                  <p>32</p>
+                  <p>{userData.age || '32'}</p>
                 </div>
                 <div className="detail-item">
                   <label>Gender:</label>
-                  <p>Male</p>
+                  <p>{userData.gender || 'Male'}</p>
                 </div>
                 <div className="detail-item">
                   <label>Blood Group:</label>
-                  <p>O+</p>
+                  <p>{userData.bloodGroup || 'O+'}</p>
                 </div>
                 <div className="detail-item">
                   <label>Emergency Contact:</label>
-                  <p>+1 555 123 4567</p>
+                  <p>{userData.emergencyContact || '+1 555 123 4567'}</p>
                 </div>
                 <div className="detail-item">
                   <label>Allergies:</label>
-                  <p>None</p>
+                  <p>{userData.allergies || 'None'}</p>
                 </div>
               </div>
             </div>
