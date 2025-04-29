@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import axios from 'axios'; // ADD THIS to handle HTTP requests
 import './Registration.css';
 
 const Registration = () => {
@@ -40,12 +41,18 @@ const Registration = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
-      console.log({ ...formData, userType });
-      alert(`Registration successful as ${userType}!`);
-      navigate('/login.js');
+      try {
+        const submissionData = { ...formData, userType }; // Attach userType
+        await axios.post('http://localhost:5001/api/register', submissionData);
+        alert(`Registration successful as ${userType}!`);
+        navigate('/login');
+      } catch (error) {
+        console.error('Registration failed:', error);
+        alert('Registration failed. Please try again.');
+      }
     }
   };
 
