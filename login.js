@@ -1,17 +1,35 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios'; // 👈 Make sure axios is installed
 import './yo.css';
+import Registration from './Registration';
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [showRegistration, setShowRegistration] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (username === 'admin' && password === 'password') {
-      navigate('/Dashboard');
-    } else {
+    try {
+      const response = await axios.post('http://localhost:5001/api/login', {
+        email: username,
+        password
+      });
+
+      const { userType } = response.data;
+
+      if (userType === 'doctor') {
+        navigate('/DocChat');
+      } else if (userType === 'user') {
+        navigate('/Dashboard');
+      } else {
+        alert('Unknown user type');
+      }
+
+    } catch (error) {
+      console.error('Login error:', error);
       alert('Invalid username or password');
     }
   };
@@ -31,7 +49,7 @@ const Login = () => {
           <div className="input-group">
             <input
               type="text"
-              placeholder="Username"
+              placeholder="Email"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               required
@@ -59,10 +77,24 @@ const Login = () => {
         <div className="additional-options">
           <a href="#forgot" className="forgot-password">Forgot Password?</a>
           <p className="signup-link">
-            New user? <a href="#signup">Create account</a>
+            New user?{' '}
+            <button onClick={() => setShowRegistration(true)} className="modal-trigger">
+              Create account
+            </button>
           </p>
         </div>
       </div>
+
+      {showRegistration && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <button className="close-modal" onClick={() => setShowRegistration(false)}>
+              ✖
+            </button>
+            <Registration />
+          </div>
+        </div>
+      )}
     </div>
   );
 };
